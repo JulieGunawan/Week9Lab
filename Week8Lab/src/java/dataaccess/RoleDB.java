@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import models.Role;
 
 public class RoleDB {
 
@@ -32,7 +33,7 @@ public class RoleDB {
             cp.freeConnection(con);
         }
 
-        return notes;
+        return roles;
     }
 
 }
