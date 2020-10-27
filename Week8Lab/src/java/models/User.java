@@ -11,8 +11,8 @@ import java.io.Serializable;
  *
  * @author 831690
  */
-public class User implements Serializable{
-   
+public class User implements Serializable {
+
     private String email;
     private int active;
     private String firstName;
@@ -21,9 +21,9 @@ public class User implements Serializable{
     private int role;
 
     public User() {
-        
+
     }
-    
+
     public User(String email, int active, String firstName, String lastName, String password, int role) {
         this.email = email;
         this.active = active;
@@ -76,11 +76,5 @@ public class User implements Serializable{
     public void setRole(int role) {
         this.role = role;
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
