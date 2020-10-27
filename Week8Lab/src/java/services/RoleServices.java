@@ -10,5 +10,7 @@ package services;
  * @author 829468
  */
 public class RoleServices {
-    
+    public void getAll() {
+        
+    }
 }
