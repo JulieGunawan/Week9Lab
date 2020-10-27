@@ -5,12 +5,17 @@
  */
 package services;
 
+import java.util.List;
+import models.User;
+
 /**
  *
  * @author 829468
  */
 public class RoleServices {
-    public void getAll() {
-        
+    public List<User> getAll (String email) throws Exception {
+        UserDB noteDB = new UserDB();
+        List<User> notes = UserDB.getAll(email);
+        return notes;
     }
 }
