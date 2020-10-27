@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `userdb`.`user` (
   PRIMARY KEY (`email`),
   CONSTRAINT `fk_user_role`
     FOREIGN KEY (`role`)
-    REFERENCES `inventorydb`.`role` (`role_id`));
+    REFERENCES `userdb`.`role` (`role_id`));
 
 
 INSERT INTO `role` VALUES (1, 'system admin');
