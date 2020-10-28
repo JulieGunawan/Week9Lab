@@ -13,8 +13,7 @@ div.background {
 
 div.box {
     padding: 30px;
-    
-    margin: 5%;
+    margin: 2%;
     background-size: cover;
     background-color: rgba(24,4,5,0.8);
     color: #FFFFFF;
@@ -25,11 +24,11 @@ div.box {
 }
 
 div.add {
-    width: 15%;
+    width: 25%;
 }
 
 div.manage{
-    width: 50%;
+    width: 70%;
 }
 
 div.full {
@@ -41,4 +40,23 @@ div.full {
 body {
     font-family: "Microsoft Sans Serif";
     font-size: 18px ;
+}
+
+table {
+    border: #00cccc double;
+    padding: 10px;
+    width: 100%;
+}
+
+tr:not(:first-child) td {
+    border-top: #FFFFFF solid 1px;
+    padding: 5px;
+}
+
+input[type="text"], select {
+    width: 100%;
+    height: 30px;
+    background: #222222;
+    border-color: #666666;
+    color: #FFFFFF;
 }
