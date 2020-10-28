@@ -45,12 +45,12 @@ public class UserServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         String email = request.getParameter("email");
-        int active = Integer.parseInt(request.getParameter("active"));
+        int active = 1;
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String password = request.getParameter("password");
-        int role = Integer.parseInt(request.getParameter("role"));
-
+        int role = 1;
+        
         User newUser = new User(email, active, firstName, lastName, password, role);
 
         try {
@@ -70,7 +70,7 @@ public class UserServlet extends HttpServlet {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
 
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
+        doGet(request, response);
     }
 
 }

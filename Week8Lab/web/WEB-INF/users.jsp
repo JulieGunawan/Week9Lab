@@ -21,23 +21,24 @@
             <div class="box add">
             <h1>Add User</h1>
             <form>
-                <input type="text" name="emailInput" placeholder="E-Mail">
+                <input type="text" name="email" placeholder="E-Mail">
                 <br/>
 
-                <input type="text" name="firstNameInput" placeholder="First Name">
+                <input type="text" name="firstName" placeholder="First Name">
                 <br/>
 
-                <input type="text" name="lastNameInput" placeholder="Last Name">
+                <input type="text" name="lastName" placeholder="Last Name">
                 <br/>
 
-                <input type="text" name="passwordInput" placeholder="Password">
+                <input type="text" name="password" placeholder="Password">
                 <br/>
-                <select name="roleInput"><option value="regular user" selected="selected">Regular User</option>
+                <select name="role"><option value="regular user" selected="selected">Regular User</option>
 
                     <option value="system admin">System Administrator</option>
 
                     <option value="company admin">Company Administrator</option>
                 </select><br/>
+                <input type="hidden" name="action" value="add">
                 <input type="submit" value="Add User">
             </form>
         </div>
