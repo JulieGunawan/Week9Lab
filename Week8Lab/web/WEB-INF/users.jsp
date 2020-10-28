@@ -12,11 +12,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Users Database</title>
+        <link href="./stylesheet.css" type="text/css" rel="stylesheet">
     </head>
     <body>
-
+        <div class="background"/>
+        <div class="full">
         <c:if test="${editUser ne true}">
-        <div>
+            <div class="box add">
             <h1>Add User</h1>
             <form>
                 <input type="text" name="emailInput" placeholder="E-Mail">
@@ -41,7 +43,7 @@
         </div>
         </c:if>
         <c:if test="${editUser eq true}">
-            <div>
+            <div class="box add">
             <h1>Edit User</h1>
             <form>
                 <input type="text" name="emailInput" placeholder="E-Mail" value="${editUser.email}">
@@ -67,7 +69,7 @@
         </div>
         </c:if>
 
-        <div>
+            <div class="box manage">
             <h1>Manage User</h1>
             <table>
                 <c:forEach items="${user}" var="read">
@@ -76,13 +78,14 @@
                         <td>${read.firstName}</td>
                         <td>${read.lastName}</td>
                         <td>${read.role}</td>
-                        
+                        <td>
                     <a href="users?editUser=true">Edit</a>
+                        </td>
                     </tr>    
                 </c:forEach>
             </table>
         </div>
-
+        </div>
         
     </body>
 </html>
