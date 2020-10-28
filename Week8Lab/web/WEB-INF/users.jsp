@@ -76,6 +76,7 @@
                         <td>${read.firstName}</td>
                         <td>${read.lastName}</td>
                         <td>${read.role}</td>
+                        
                     <a href="users?editUser=true">Edit</a>
                     </tr>    
                 </c:forEach>
