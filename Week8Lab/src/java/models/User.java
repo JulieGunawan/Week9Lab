@@ -32,7 +32,10 @@ public class User implements Serializable {
         this.password = password;
         this.role = role;
     }
-
+    public void setEmail(String email){
+        this.email=email;
+    }
+    
     public String getEmail() {
         return email;
     }
