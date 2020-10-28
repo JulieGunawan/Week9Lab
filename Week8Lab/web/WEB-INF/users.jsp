@@ -70,7 +70,7 @@
         <div>
             <h1>Manage User</h1>
             <table>
-                <c:forEach items="${users}" var="read">
+                <c:forEach items="${user}" var="read">
                     <tr>
                         <td>${read.email}</td>
                         <td>${read.firstName}</td>

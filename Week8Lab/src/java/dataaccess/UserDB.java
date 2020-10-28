@@ -9,6 +9,10 @@ import models.*;
 
 public class UserDB {
 
+    public static List<User> getAll(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public List<User> getAll() throws Exception {
         List<User> users = new ArrayList<>();
         ConnectionPool cp = ConnectionPool.getInstance();
@@ -16,11 +20,11 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = "SELECT * FROM user WHERE owner=?";
+        String sql = "SELECT * FROM user";
         
         try {
             ps = con.prepareStatement(sql);
-           // ps.setString(1, email);
+           
             rs = ps.executeQuery();
             while (rs.next()) {
                 String email=rs.getString(1);
