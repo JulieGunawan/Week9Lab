@@ -16,7 +16,7 @@ import models.Role;
 public class RoleServices {
     public List<Role> getAll (String email) throws Exception {
         RoleDB roleDB = new RoleDB();
-        List<Role> roles = RoleDB.getAll();
+        List<Role> roles = roleDB.getAll();
         return roles;
     }
 }
