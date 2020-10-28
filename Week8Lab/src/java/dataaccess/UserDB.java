@@ -20,11 +20,11 @@ public class UserDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         
-        String sql = "SELECT * FROM user WHERE owner=?";
+        String sql = "SELECT * FROM user";
         
         try {
             ps = con.prepareStatement(sql);
-           // ps.setString(1, email);
+           
             rs = ps.executeQuery();
             while (rs.next()) {
                 String email=rs.getString(1);
