@@ -20,7 +20,7 @@
         <c:if test="${editUser ne true}">
             <div class="box add">
             <h1>Add User</h1>
-            <form>
+            <form method="post" action="user">
                 <input type="text" name="email" placeholder="E-Mail">
                 <br/>
 
@@ -46,7 +46,7 @@
         <c:if test="${editUser eq true}">
             <div class="box add">
             <h1>Edit User</h1>
-            <form>
+            <form method="post" action="user">
                 <input type="text" name="emailInput" placeholder="E-Mail" value="${editUser.email}">
                 <br/>
 
