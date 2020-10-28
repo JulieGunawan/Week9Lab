@@ -27,20 +27,21 @@ public class UserService {
     }
     
     
-    public void insert(User thisUser) throws Exception {
-        User user = thisUser;
+    public void insert(String email, int active, String first_name, String last_name, String password, int role) throws Exception {
+        User user = new User(email, active, first_name, last_name, password, role);
         UserDB userDB = new UserDB();
         userDB.insert(user);
     }
     
-    public void update(User thisUser) throws Exception {
-        User user = thisUser;
+    public void update(String email, int active, String first_name, String last_name, String password, int role) throws Exception {
+        User user = new User(email, active, first_name, last_name, password, role);
         UserDB userDB = new UserDB();
         userDB.update(user);
     }
     
-    public void delete(User thisUser) throws Exception {
-        User user = thisUser;
+    public void delete(String email) throws Exception {
+        User user = new User();
+        user.setEmail(email);
         UserDB userDB = new UserDB();
         userDB.delete(user);
     }
