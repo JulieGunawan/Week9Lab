@@ -9,6 +9,10 @@ import models.*;
 
 public class UserDB {
 
+    public static List<User> getAll(String email) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public List<User> getAll() throws Exception {
         List<User> users = new ArrayList<>();
         ConnectionPool cp = ConnectionPool.getInstance();
