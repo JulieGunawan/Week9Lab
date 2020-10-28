@@ -10,14 +10,14 @@ import java.util.List;
 import models.User;
 /**
  *
- * @author 831690
+ * @author 829942
  */
 public class UserService {
     
     public User get(String email) throws Exception {
         UserDB userDB = new UserDB();
         User user = userDB.get(email);
-        return null;
+        return user;
     }
     
     public List<User> getAll() throws Exception {
