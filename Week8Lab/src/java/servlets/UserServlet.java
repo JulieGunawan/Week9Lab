@@ -19,9 +19,10 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         UserService users = new UserService();
         RoleServices roles = new RoleServices();
+        
 
         try {
             List<User> user = users.getAll();
@@ -32,8 +33,8 @@ public class UserServlet extends HttpServlet {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("message", "error");
         }
+ getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
 
-        getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class UserServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String password = request.getParameter("password");
         int role = Integer.parseInt(request.getParameter("role"));
-        
+
         User newUser = new User(email, active, firstName, lastName, password, role);
 
         try {
