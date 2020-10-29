@@ -32,11 +32,11 @@
 
                 <input type="text" name="password" placeholder="Password">
                 <br/>
-                <select name="role"><option value="regular user" selected="selected">Regular User</option>
+                <select name="role"><option value="1" selected="selected">Regular User</option>
 
-                    <option value="system admin">System Administrator</option>
+                    <option value="2">System Administrator</option>
 
-                    <option value="company admin">Company Administrator</option>
+                    <option value="3">Company Administrator</option>
                 </select><br/>
                 <input type="hidden" name="action" value="add">
                 <input type="submit" value="Add User">

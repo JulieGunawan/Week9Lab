@@ -49,7 +49,7 @@ public class UserServlet extends HttpServlet {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String password = request.getParameter("password");
-        int role = 1;
+        int role = Integer.parseInt(request.getParameter("role"));
         
         User newUser = new User(email, active, firstName, lastName, password, role);
 
