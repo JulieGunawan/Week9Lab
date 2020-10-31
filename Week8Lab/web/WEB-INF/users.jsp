@@ -32,11 +32,10 @@
 
                         <input type="text" name="password" placeholder="Password">
                         <br/>
-                        <select name="role"><option value="1" selected="selected">Regular User</option>
-
-                            <option value="2">System Administrator</option>
-
-                            <option value="3">Company Administrator</option>
+                        <select name="role">
+                            <c:forEach items="${role}" var="read">    
+                                <option value="${read.roleID}">${read.roleName}</option>
+                            </c:forEach>
                         </select><br/>
                         <input type="hidden" name="action" value="add">
                         <input type="submit" value="Add User">
@@ -59,11 +58,9 @@
                         <input type="text" name="password" placeholder="Password" value="${editUser.password}">
                         <br/>
                         <select name="role">
-                            <option value="1">Regular User</option>
-
-                            <option value="2">System Administrator</option>
-
-                            <option value="3">Company Administrator</option>
+                            <c:forEach items="${role}" var="read">    
+                                <option value="${read.roleID}" <c:if test="${editUser.role eq read.roleID}">selected</c:if>>${read.roleName}</option>
+                            </c:forEach>
                         </select><br/>
                         <input type="hidden" name="action" value="update">
                         <input type="submit" value="Update">
@@ -80,24 +77,36 @@
             <div class="box manage">
                 <h1>Manage User</h1>
                 <table>
+                    <tr>
+                        <td><b><u>Email</u></b></td>
+                        <td><b><u>First Name</u></b></td>
+                        <td><b><u>Last Name</u></b></td>
+                        <td><b><u>Role</u></b></td>
+                        <td><b><u>Edit</u></b></td>
+                        <td><b><u>Delete</u></b></td>
+                    </tr>
                     <c:forEach items="${user}" var="read">
                         <tr>
                             <td>${read.email}</td>
                             <td>${read.firstName}</td>
                             <td>${read.lastName}</td>
-                            <td>${read.role}</td>
+                            <td>
+                                <c:forEach items="${role}" var="readA">    
+                                    <c:if test="${read.role eq readA.roleID}">${readA.roleName}</c:if>
+                                </c:forEach>
+                            </td>
                             <td>
                                 <form method="post" action="user">
                                     <input type="hidden" name="action" value="edit">
                                     <input type="hidden" name="useremail" value="${read.email}">
-                                    <input type="submit" value="Edit">
+                                    <button class="btnEdit" type="submit" value="Edit"></button>
                                 </form>
                             </td>
                             <td>
                                 <form method="post" action="user">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="useremail" value="${read.email}">
-                                    <input type="submit" value="Delete">
+                                    <button class="btnDelete" type="submit" value="Delete"></button>
                                 </form>
                             </td>
                         </tr>

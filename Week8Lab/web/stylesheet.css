@@ -60,3 +60,26 @@ input[type="text"], select {
     border-color: #666666;
     color: #FFFFFF;
 }
+
+.btnDelete {
+  background: url(images/delete.png) no-repeat;
+  width: 15px;
+  height: 15px;
+  background-size: 100% 100%;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-left: 15px;
+
+}
+
+.btnEdit {
+  background: url(images/edit.png) no-repeat;
+  width: 15px;
+  height: 15px;
+  background-size: 100% 100%;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-left: 8px;
+}
