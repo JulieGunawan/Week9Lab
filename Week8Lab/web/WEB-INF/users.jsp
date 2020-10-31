@@ -17,7 +17,7 @@
     <body>
         <div class="background"/>
         <div class="full">
-            <c:if test="${editUser ne true}">
+            <c:if test="${empty editUser}">
                 <div class="box add">
                     <h1>Add User</h1>
                     <form method="post" action="user">
@@ -43,7 +43,7 @@
                     </form>
                 </div>
             </c:if>
-            <c:if test="${param.editUser eq true}">
+            <c:if test="${not empty editUser}">
                 <div class="box add">
                     <h1>Edit User</h1>
                     <form method="post" action="user">
@@ -67,7 +67,13 @@
                         </select><br/>
                         <input type="hidden" name="action" value="update">
                         <input type="submit" value="Update">
+                        
+                        <form method="post" action="user">
+                            <input type="hidden" name="action" value="cancel">
+                            <input type="submit" value="Cancel">
+                        </form>
                     </form>
+                    
                 </div>
             </c:if>
 
@@ -81,9 +87,20 @@
                             <td>${read.lastName}</td>
                             <td>${read.role}</td>
                             <td>
-                                <a href="user?editUser=true">Edit</a>
+                                <form method="post" action="user">
+                                    <input type="hidden" name="action" value="edit">
+                                    <input type="hidden" name="useremail" value="${read.email}">
+                                    <input type="submit" value="Edit">
+                                </form>
                             </td>
-                        </tr>    
+                            <td>
+                                <form method="post" action="user">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="useremail" value="${read.email}">
+                                    <input type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
                     </c:forEach>
                 </table>
             </div>

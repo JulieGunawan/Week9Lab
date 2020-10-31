@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import models.Role;
 import models.User;
 import services.RoleServices;
@@ -22,7 +21,6 @@ public class UserServlet extends HttpServlet {
         
         UserService users = new UserService();
         RoleServices roles = new RoleServices();
-        
 
         try {
             List<User> user = users.getAll();
@@ -33,26 +31,35 @@ public class UserServlet extends HttpServlet {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
             request.setAttribute("message", "error");
         }
- getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
-
+        getServletContext().getRequestDispatcher("/WEB-INF/users.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        UserService users = new UserService();
-        RoleServices roles = new RoleServices();
+        
         String action = request.getParameter("action");
+        
+        if (action.equalsIgnoreCase("cancel")) {
+            doGet(request, response);
+            return;
+        }
+                
+        UserService users = new UserService();
+        
+        User newUser = null;
+        String userEmail = request.getParameter("useremail");
 
-        String email = request.getParameter("email");
-        int active = 1;
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String password = request.getParameter("password");
-        int role = Integer.parseInt(request.getParameter("role"));
+        if (userEmail == null || userEmail.isEmpty()) {
+            String email = request.getParameter("email");
+            int active = 1;
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String password = request.getParameter("password");
+            int role = Integer.parseInt(request.getParameter("role"));
 
-        User newUser = new User(email, active, firstName, lastName, password, role);
+            newUser = new User(email, active, firstName, lastName, password, role);            
+        }
 
         try {
             switch (action) {
@@ -63,9 +70,11 @@ public class UserServlet extends HttpServlet {
                     users.update(newUser);
                     break;
                 case "delete":
-                    users.delete(newUser);
+                    users.delete(userEmail);
                     break;
-
+                case "edit":
+                    request.setAttribute("editUser", users.get(userEmail));
+                    break;
             }
         } catch (Exception ex) {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
