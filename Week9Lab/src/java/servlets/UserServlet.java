@@ -62,6 +62,11 @@ public class UserServlet extends HttpServlet {
             newUser = new User(email, active, firstName, lastName, password);          
             
         }
+        
+        User originalUser = null;
+        String originalEmail = request.getParameter("originalemail");
+        if (originalEmail !=null)
+            originalUser = new User(originalEmail);
 
         try {
             switch (action) {
@@ -69,7 +74,13 @@ public class UserServlet extends HttpServlet {
                     users.insert(newUser, newRole);
                     break;
                 case "update":
-                    users.update(newUser, newRole);
+                    if (newUser.equals(originalUser)) {
+                       users.update(newUser, newRole); 
+                    } else {
+                        users.delete(originalUser.getEmail());
+                        users.insert(newUser, newRole);
+                    }
+                    
                     break;
                 case "delete":
                     users.delete(userEmail);

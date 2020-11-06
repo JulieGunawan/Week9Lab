@@ -45,12 +45,12 @@ public class UserDB {
         EntityTransaction trans = em.getTransaction();
         
         try {
-            Role role = user.getRole();
+           // Role role = user.getRole();
             //User newUser = user;
             trans.begin();
             em.persist(user);
             em.merge(user);
-            em.merge(role);
+           // em.merge(role);
             trans.commit();
         }
         catch (Exception ex) {
