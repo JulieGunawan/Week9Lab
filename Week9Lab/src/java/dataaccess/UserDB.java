@@ -17,6 +17,7 @@ public class UserDB {
 
     public List<User> getAll() throws Exception {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
+       
         
         try {
           List<User> users = em.createNamedQuery("User.findAll", User.class).getResultList();
@@ -31,7 +32,7 @@ public class UserDB {
         
         try {
             User user = em.find(User.class, email);
-            System.out.println("user first name: "+user.getFirstName());
+            //System.out.println("user first name: "+user.getFirstName());
             return user;
         } finally {
             em.close();
@@ -48,6 +49,7 @@ public class UserDB {
             //User newUser = user;
             trans.begin();
             em.persist(user);
+            em.merge(user);
             em.merge(role);
             trans.commit();
         }
@@ -86,6 +88,7 @@ public class UserDB {
             
             trans.begin();
             em.remove(em.merge(user));
+            role.getUserList().remove(user);
             em.merge(role);
             trans.commit();
             
